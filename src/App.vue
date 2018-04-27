@@ -12,11 +12,19 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: STHeiti,Microsoft YaHei,SimSun,arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  background:url('http://p40kjburh.bkt.clouddn.com/18-4-18/45744326.jpg');
 }
 </style>
