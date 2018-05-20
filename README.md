@@ -1,4 +1,4 @@
-# plant
+# plant2
 
 > A Vue.js project
 

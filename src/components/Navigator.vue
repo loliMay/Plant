@@ -2,20 +2,69 @@
     <nav>
       <div class="logo"><a href="./"></a></div>
       <ul>
-        <li><a href="http://"></a>条件检索</li>
-        <li><a href="http://"></a>关键词检索</li>
-        <li><a href="http://"></a>关于项目</li>
-        <li><a href="http://"></a>反馈建议</li>
+        <li @click="pageSwitch(1)" index='1' :class="{ current:index1 }">条件检索</li>
+        <li @click='pageSwitch(2)' index='2' :class="{ current:index2 }">关键词检索</li>
+        <li @click='pageSwitch(3)' index='3' :class="{ current:index3 }">关于项目</li>
+        <li @click='pageSwitch(4)' index='4' :class="{ current:index4 }">反馈建议</li>
       </ul>
     </nav>
 </template>
 
 <script>
 export default {
-  name: 'Panel',
   data () {
     return {
-      msg: '欢迎来到你的第一个Vue应用'
+      index1: true,
+      index2: false,
+      index3: false,
+      index4: false
+    }
+  },
+  name: 'Panel',
+  methods: {
+    pageSwitch (index) {
+      switch (index.toString()) {
+        case '1':
+          this.$router.push('/')
+          break
+        case '2':
+          this.$router.push('/keyword')
+          break
+        case '3':
+          this.$router.push('/about')
+          break
+        case '4':
+          this.$router.push('/feedback')
+      }
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      switch (this.$store.state.current) {
+        case 0:
+          this.index1 = true
+          this.index2 = false
+          this.index3 = false
+          this.index4 = false
+          break
+        case 1:
+          this.index1 = false
+          this.index2 = true
+          this.index3 = false
+          this.index4 = false
+          break
+        case 2:
+          this.index1 = false
+          this.index2 = false
+          this.index3 = true
+          this.index4 = false
+          break
+        case 3:
+          this.index1 = false
+          this.index2 = false
+          this.index3 = false
+          this.index4 = true
+      }
     }
   }
 }
@@ -39,14 +88,14 @@ export default {
       margin-left 70px
       a
       font-weight 900
-      font-family  SimHei
+      font-family  '黑体'
       font-size 20px
-      line-height 120px
-      text-shadow 0 0 0.5px #fff
+      line-height 100px
       cursor pointer
       &:hover
         color rgba(64, 158, 255,1)
-        text-shadow 0 0 1px rgba(64, 158, 255,1)
+    .current
+      color rgba(64, 158, 255,1)
   .logo
     height 100px
     width 200px
